@@ -22,33 +22,36 @@
     .viewerSide {
       width: 100%;
       height: 100%;
-      background: darkred;
 
       transition: all .45s ease;
     }
+
     .settingsSide {
       height: 100%;
       width: fit-content;
+      position: relative;
 
       // todo remove next styles when we will have sidebar
       display: flex;
       align-items: center;
       justify-content: center;
       font-size: 1.5rem;
-      background: orangered;
     }
 
     .content {
-      // TODO styles for sidebar content
+      width: 100%;
+      height: 100%;
+
+      padding: 3.125rem 0;
     }
 
     .openedSidebar {
       width: calc(100% - 34.875rem);
     }
+
     .closedSidebar {
       width: 100%;
     }
-
 
     .open {
       width: 34.875rem;
@@ -72,6 +75,36 @@
       opacity: 0;
       transition: all .3s ease;
       pointer-events: none;
+    }
+
+    .closeBtn {
+      cursor: pointer;
+      position: absolute;
+      padding: 0.5rem;
+
+      top: 50%;
+      left: -3.125rem;
+
+      transform: translateY(-50%);
+      transition: transform .35s ease;
+
+      &:hover {
+        transform: translateY(-50%) translateX(30%);
+      }
+
+      svg {
+        width: 1.375rem;
+        height: 3.75rem;
+      }
+    }
+
+    .rotateBtn {
+      padding: 0.5rem;
+      transform: rotate(180deg) translateY(50%);
+
+      &:hover {
+        transform: rotate(180deg) translateY(50%) translateX(20%) !important;
+      }
     }
   }
 }

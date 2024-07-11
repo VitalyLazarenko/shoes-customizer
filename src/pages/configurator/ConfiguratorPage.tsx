@@ -1,17 +1,14 @@
-import {useMemo} from "react";
 import classNames from 'classnames'
 import styles from './styles.module.scss'
 import useConfiguratorStore from "../../store/configuratorStore.ts";
 import ModelViewer from "../../components/3D/modelViewer/ModelViewer.tsx";
+import {Sidebar} from "../../components";
+import {SideArrowIcon} from "../../components/icons";
 export const ConfiguratorPage = () => {
   const {
     isShowSidebar,
-    setIsLoading,
+    setIsShowSidebar,
   } = useConfiguratorStore()
-  
-  useMemo(() => {
-    setTimeout(() => setIsLoading(false), 1000)
-  }, [])
   
   return (
     <div className={styles.configuratorPageWrapper}>
@@ -21,7 +18,10 @@ export const ConfiguratorPage = () => {
         </div>
         <div className={classNames(styles.settingsSide, isShowSidebar ? styles.open : styles.close)}>
           <div className={classNames(styles.content, isShowSidebar ? styles.show : styles.hide)}>
-            Sidebar with settings coming soon...
+            <Sidebar/>
+          </div>
+          <div className={classNames(styles.closeBtn, !isShowSidebar && styles.rotateBtn)} onClick={() => setIsShowSidebar(!isShowSidebar)}>
+            <SideArrowIcon/>
           </div>
         </div>
       </div>

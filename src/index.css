@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&display=swap');
+
 html {
   height: 100%;
   font-size: calc(0.618vw + 0.381vh);
@@ -7,6 +10,11 @@ html {
 }
 
 :root {
+  --main-light: #00B09B;
+  --main-dark: #00605D;
+  --main-gradient: linear-gradient(355deg, #00B09B 18.26%, #00605D 74.64%);;
+
+
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
@@ -36,6 +44,8 @@ body {
   place-items: center;
   min-width: 320px;
   min-height: 100vh;
+
+  background-color: #FFF;
 }
 
 h1 {

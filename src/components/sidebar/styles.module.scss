@@ -1,0 +1,66 @@
+.sidebarWrapper {
+  width: 100%;
+  height: 100%;
+  position: relative;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-end;
+
+  .settingsContainer {
+    width: 100%;
+    height: 100%;
+
+    overflow-y: auto;
+    overflow-x: hidden;
+    max-height: calc(100vh - 6.25rem);
+
+    transition: all .35s ease;
+
+    &::-webkit-scrollbar {
+      width: 0.3125rem;
+    }
+    &::-webkit-scrollbar-track {
+      box-shadow: inset 0 0 3px rgba(0, 0, 0, 0.1);
+      border-radius: 3px;
+    }
+    &::-webkit-scrollbar-thumb {
+      background-color: var(--main-dark);
+      border-radius: 0.1875rem;
+      height: 1.25rem;
+    }
+  }
+
+  .saveBtn {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform .35s ease-in-out;
+
+    span {
+      padding-top: 0.3125rem;
+      font-family: Josefin Sans, sans-serif;
+      font-size: 1.875rem;
+      font-weight: 300;
+      line-height: 1.875rem;
+      text-align: left;
+      text-transform: uppercase;
+
+      text-decoration: underline;
+      color: var(--main-light);
+
+      margin-right: 0.625rem;
+    }
+
+    svg {
+      width: 2rem;
+      height: 2rem;
+    }
+
+    &:hover {
+      transform: translateX(0.625rem);
+    }
+  }
+}

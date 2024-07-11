@@ -1,0 +1,9 @@
+const Chevron = () => {
+  return (
+    <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M22 18L15 11L8 18" stroke="#00B09B" strokeLinecap="round" strokeLinejoin="round"/>
+    </svg>
+  )
+}
+
+export default Chevron

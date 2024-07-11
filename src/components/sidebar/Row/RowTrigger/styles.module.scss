@@ -1,0 +1,53 @@
+.rowTriggerWrapper {
+  width: 100%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  h2 {
+    font-family: Orbitron, sans-serif;
+    font-size: 1.875rem;
+    font-weight: 400;
+    line-height: 2.35125rem;
+    letter-spacing: 0.01em;
+    text-align: left;
+    color: var(--main-dark);
+
+    transition: transform .35s ease;
+  }
+
+  &:hover {
+    h2 {
+      transform: scale(.95);
+    }
+  }
+
+  .line {
+    width: 50%;
+    height: 0.0625rem;
+
+    background: var(--main-light);
+  }
+
+  .chevronContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    svg {
+      width: 2rem;
+      height: 2rem;
+
+      transition: transform .45s ease;
+      path {
+        stroke: var(--main-light);
+      }
+    }
+  }
+  .chevronCollapsed {
+    svg {
+      transform: rotate(180deg);
+    }
+  }
+}
