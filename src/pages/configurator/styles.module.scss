@@ -1,0 +1,40 @@
+.configuratorPageWrapper {
+  width: 100%;
+  height: 100%;
+  color: white;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 0 6rem;
+
+  font-size: 2rem;
+
+  .contentPageWrapper {
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    .viewerSide {
+      width: 70%;
+      height: 100%;
+      background: darkred;
+    }
+    .settingsSide {
+      width: 30%;
+      height: 100%;
+
+
+      // todo remove next styles when we will have sidebar
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      background: orangered;
+    }
+  }
+}
