@@ -4,6 +4,8 @@ export const models: Models = {
   'shoes': {
     modelName: 'Adidas Sneakers',
     modelUrl: '/models/Adidas_Stan_Smith.glb',
+    modelPosition: [],
+    modelRotation: [],
     lightMode: 'mode-1',
     categories: [
       {

@@ -21,6 +21,8 @@ export interface Model {
   modelName: string;
   modelUrl: string;
   lightMode: string;
+  modelPosition?: number[],
+  modelRotation?: number[],
   categories: Category[];
 }
 
