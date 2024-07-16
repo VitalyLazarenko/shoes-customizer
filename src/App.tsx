@@ -7,6 +7,7 @@ import {ConfiguratorPage} from "./pages/configurator/ConfiguratorPage.tsx"
 
 function App() {
   
+  
   return (
     <>
       <Routes>

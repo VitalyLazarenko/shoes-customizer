@@ -3,14 +3,22 @@ import styles from './styles.module.scss'
 import {SettingRow} from "./Row/SettingRow.tsx"
 import SaveIcon from "../icons/saveIcon.tsx";
 import {toast} from "react-toastify";
-const Sidebar = () => {
+import {Category} from "../../types/main.ts";
+import {FC} from "react";
+
+interface ISidebar {
+  categories?: Category[];
+}
+
+const Sidebar:FC<ISidebar> = ({categories}) => {
   return (
     <div className={classNames(styles.sidebarWrapper)}>
       <div className={styles.settingsContainer}>
-        <SettingRow openedByDefault={true}/>
-        <SettingRow/>
-        <SettingRow/>
-        <SettingRow/>
+        {
+          categories && categories.map(category => (
+            <SettingRow category={category} openedByDefault={false}/>
+          ))
+        }
       </div>
       <div className={styles.saveBtn} onClick={() => toast.info('Coming soon...')}>
         <span>save</span> <SaveIcon/>
