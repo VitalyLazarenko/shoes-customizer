@@ -5,18 +5,33 @@ import {OrbitControls, useGLTF} from "@react-three/drei"
 import classNames from "classnames";
 import {AroundArrowIcon} from "../../icons";
 import useConfiguratorStore from "../../../store/configuratorStore.ts";
+import { MeshStandardMaterial, Mesh } from 'three';
 
 const Model = () => {
-  const {setIsLoading} = useConfiguratorStore()
+  const { setIsLoading, selectedOptions } = useConfiguratorStore();
   const { scene } = useGLTF('/models/Adidas_Stan_Smith.glb');
-  // const {scene} = useGLTF('/models/scene_1.glb');
   
   useMemo(() => {
     if (scene) {
-      setTimeout(() => setIsLoading(false), 1000)
+      setTimeout(() => setIsLoading(false), 1000);
+      
+      selectedOptions.forEach(option => {
+        if (option.subCategories === 'Color') {
+          const materialNames = option.materialNames;
+          const color = option.option.color;
+          
+          materialNames.forEach(materialName => {
+            const material = scene.getObjectByName(materialName);
+            if (material && material instanceof Mesh) {
+              material.material = new MeshStandardMaterial({ ...material.material, color });
+            }
+          });
+        }
+      });
     }
-  }, [scene])
-  return <primitive position={[0, -0.2, 0]} object={scene}/>;
+  }, [scene, selectedOptions]);
+  
+  return <primitive position={[0, -0.2, 0]} object={scene} />;
 };
 
 const ModelViewer = () => {

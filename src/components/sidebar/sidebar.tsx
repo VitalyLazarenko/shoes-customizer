@@ -16,7 +16,7 @@ const Sidebar:FC<ISidebar> = ({categories}) => {
       <div className={styles.settingsContainer}>
         {
           categories && categories.map(category => (
-            <SettingRow category={category} openedByDefault={false}/>
+            <SettingRow key={category.categoryName} category={category} openedByDefault={false}/>
           ))
         }
       </div>

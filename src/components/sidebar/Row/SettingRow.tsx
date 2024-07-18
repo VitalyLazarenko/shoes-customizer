@@ -3,7 +3,9 @@ import styles from './styles.module.scss'
 import Collapsible from "react-collapsible"
 import {RowTrigger} from "./RowTrigger/RowTrigger.tsx"
 import classNames from "classnames";
-import {Category, Option} from "../../../types/main.ts";
+import {Category, Option, SubCategory} from "../../../types/main.ts";
+import useConfiguratorStore from "../../../store/configuratorStore.ts";
+import {toast} from "react-toastify";
 
 interface ISettingsRow {
   openedByDefault?: boolean;
@@ -13,12 +15,32 @@ interface ISettingsRow {
 export const SettingRow: FC<ISettingsRow> = ({openedByDefault = false, category}) => {
   const [isShowRow, setIsShowRow] = useState<boolean>(false)
   
-  const drawOptions = (options: Option[]) => {
+  const {selectedOptions, selectOption} = useConfiguratorStore()
+  
+  const drawOptions = (subCategoryOptions: SubCategory) => {
+    
+    const handleSelectOption = (item: Option) => {
+      if (subCategoryOptions.title === 'Material') {
+        toast.info('Coming soon...')
+      }
+      selectOption({
+        categoryName: category.categoryName,
+        materialType: category.materialType,
+        materialNames: category.materialNames,
+        subCategories: subCategoryOptions.title,
+        option: item
+      })
+    }
+    
+    const checkSelection = (id: string) => {
+      return !!selectedOptions.find(el => el.option.id === id)
+    }
+    
     return (
       <div className={styles.optionsContainer}>
         {
-          options.map(option => (
-            <div className={classNames(styles.option, false && styles.active)}>
+          subCategoryOptions.options.map(option => (
+            <div key={option.id} className={classNames(styles.option, checkSelection(option.id) && styles.active)} onClick={() => handleSelectOption(option)}>
               {
                 option.isColorPreview ?
                   <div className={styles.preview} style={{background: option.color}}/> :
@@ -44,9 +66,9 @@ export const SettingRow: FC<ISettingsRow> = ({openedByDefault = false, category}
       <div className={styles.bodyContainer}>
         {
           category.subCategories.map(subCategory => (
-            <div className={styles.optionWrapper}>
+            <div key={subCategory.title} className={styles.optionWrapper}>
               <h3>{subCategory.title}</h3>
-              {drawOptions(subCategory.options)}
+              {drawOptions(subCategory)}
             </div>
           ))
         }

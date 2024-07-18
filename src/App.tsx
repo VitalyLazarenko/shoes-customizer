@@ -6,8 +6,6 @@ import {LoadingPortal} from "./components/portals"
 import {ConfiguratorPage} from "./pages/configurator/ConfiguratorPage.tsx"
 
 function App() {
-  
-  
   return (
     <>
       <Routes>
@@ -15,7 +13,7 @@ function App() {
       </Routes>
       
       <ToastContainer
-        theme="light"
+        theme="dark"
         position="bottom-center"
         autoClose={3000}
       />

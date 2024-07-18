@@ -1,4 +1,6 @@
 export interface Option {
+  id: string;
+  isActive: boolean;
   isColorPreview: boolean;
   color: string;
   preview: string;
@@ -15,6 +17,14 @@ export interface Category {
   materialType: string;
   materialNames: string[];
   subCategories: SubCategory[];
+}
+
+export interface ISelectedCategories {
+  categoryName: string,
+  materialType: string,
+  materialNames: string[],
+  subCategories: string,
+  option: Option
 }
 
 export interface Model {
