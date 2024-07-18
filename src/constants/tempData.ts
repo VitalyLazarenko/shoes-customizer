@@ -1,14 +1,15 @@
-import {Models} from "../types/main.ts";
+import {Models} from "../types/types.ts";
 
 export const models:  Models = {
   'shoes': {
     modelName: 'Adidas Sneakers',
     modelUrl: '/models/Adidas_Stan_Smith.glb',
-    modelPosition: [],
-    modelRotation: [],
+    modelPosition: [0, -0.2, 0],
+    modelRotation: [0.2, 0, 0],
     lightMode: 'mode-1',
     categories: [
       {
+        openedByDefault: true,
         categoryName: 'Main',
         materialType: 'MESHSTANDARDMATERIAL',
         materialNames: ['Circle021_1', 'Circle024_1'],
@@ -82,6 +83,7 @@ export const models:  Models = {
         ]
       },
       {
+        openedByDefault: false,
         categoryName: 'Back',
         materialType: 'MESHSTANDARDMATERIAL',
         materialNames: ['Circle021_2', 'Circle024_2'],
@@ -155,6 +157,7 @@ export const models:  Models = {
         ]
       },
       {
+        openedByDefault: false,
         categoryName: 'Sole',
         materialType: 'MESHSTANDARDMATERIAL',
         materialNames: ['Circle021_3', 'Circle024_3'],
@@ -228,6 +231,7 @@ export const models:  Models = {
         ]
       },
       {
+        openedByDefault: false,
         categoryName: 'Laces',
         materialType: 'MESHSTANDARDMATERIAL',
         materialNames: ['Circle021_4', 'Circle024_4'],
@@ -301,6 +305,7 @@ export const models:  Models = {
         ]
       },
       {
+        openedByDefault: false,
         categoryName: 'Holes',
         materialType: 'MESHSTANDARDMATERIAL',
         materialNames: ['Circle021_5', 'Circle024_5'],
@@ -374,6 +379,7 @@ export const models:  Models = {
         ]
       },
       {
+        openedByDefault: false,
         categoryName: 'Slipsole',
         materialType: 'MESHSTANDARDMATERIAL',
         materialNames: ['Circle021_6', 'Circle024_6'],
@@ -447,6 +453,7 @@ export const models:  Models = {
         ]
       },
       {
+        openedByDefault: false,
         categoryName: 'Inner Material',
         materialType: 'MESHSTANDARDMATERIAL',
         materialNames: ['Circle021', "Circle024"],

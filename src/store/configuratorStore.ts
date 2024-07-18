@@ -1,8 +1,9 @@
 import {create} from 'zustand'
-import {ISelectedCategories, Model} from "../types/main.ts";
+import {ISelectedCategories, Model} from '../types/types.ts'
 
 interface IConfiguratorStore {
   isLoading: boolean;
+  isRotation: boolean;
   isShowSidebar: boolean;
   activeModel: Model | null;
   selectedOptions: ISelectedCategories[];
@@ -10,11 +11,13 @@ interface IConfiguratorStore {
   setIsShowSidebar: (value: boolean) => void;
   setActiveModel: (value: Model | null) => void;
   selectOption: (value: ISelectedCategories) => void;
-  clearSelectionOptions: () => void
+  clearSelectionOptions: () => void;
+  setIsRotation: (value: boolean) => void;
 }
 
 const useConfiguratorStore = create<IConfiguratorStore>((set) => ({
   isLoading: true,
+  isRotation: true,
   activeModel: null,
   isShowSidebar: true,
   selectedOptions: [],
@@ -23,6 +26,9 @@ const useConfiguratorStore = create<IConfiguratorStore>((set) => ({
   },
   setIsShowSidebar: (value) => {
     set({isShowSidebar: value})
+  },
+  setIsRotation: (value) => {
+    set({isRotation: value})
   },
   setActiveModel: (value) => {
     set({activeModel: value})

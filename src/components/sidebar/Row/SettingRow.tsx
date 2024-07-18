@@ -1,11 +1,11 @@
 import {FC, useState} from "react"
+import classNames from "classnames";
+import {toast} from "react-toastify";
 import styles from './styles.module.scss'
 import Collapsible from "react-collapsible"
 import {RowTrigger} from "./RowTrigger/RowTrigger.tsx"
-import classNames from "classnames";
-import {Category, Option, SubCategory} from "../../../types/main.ts";
 import useConfiguratorStore from "../../../store/configuratorStore.ts";
-import {toast} from "react-toastify";
+import {Category, Option, SubCategory} from "../../../types/types.ts";
 
 interface ISettingsRow {
   openedByDefault?: boolean;

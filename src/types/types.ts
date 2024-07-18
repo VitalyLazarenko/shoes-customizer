@@ -16,6 +16,7 @@ export interface Category {
   categoryName: string;
   materialType: string;
   materialNames: string[];
+  openedByDefault: boolean;
   subCategories: SubCategory[];
 }
 

@@ -32,14 +32,38 @@
     background: #FFFFFF;
 
     .rotateIcon {
+      cursor: pointer;
       position: absolute;
-      bottom: 2%;
+      bottom: 3%;
       left: 50%;
 
       svg {
         width: 2.9375rem;
         height: 1.6875rem;
+        transition: all .35s ease;
+      }
+
+      &:hover {
+        transform: scale(.95);
       }
     }
+
+    .animate {
+      animation: pulse 2s infinite;
+    }
+  }
+}
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    filter: drop-shadow(0 0 0.3125rem var(--main-light));
+  }
+  50% {
+    transform: scale(1.1);
+    filter: drop-shadow(0 0 0.9375rem var(--main-dark));
+  }
+  100% {
+    transform: scale(1);
+    filter: drop-shadow(0 0 0.3125rem var(--main-light));
   }
 }

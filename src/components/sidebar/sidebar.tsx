@@ -1,10 +1,10 @@
-import classNames from "classnames"
-import styles from './styles.module.scss'
-import {SettingRow} from "./Row/SettingRow.tsx"
-import SaveIcon from "../icons/saveIcon.tsx";
-import {toast} from "react-toastify";
-import {Category} from "../../types/main.ts";
 import {FC} from "react";
+import classNames from "classnames"
+import {toast} from "react-toastify";
+import styles from './styles.module.scss'
+import SaveIcon from "../icons/saveIcon.tsx";
+import {SettingRow} from "./Row/SettingRow.tsx"
+import {Category} from "../../types/types.ts";
 
 interface ISidebar {
   categories?: Category[];
@@ -16,7 +16,7 @@ const Sidebar:FC<ISidebar> = ({categories}) => {
       <div className={styles.settingsContainer}>
         {
           categories && categories.map(category => (
-            <SettingRow key={category.categoryName} category={category} openedByDefault={false}/>
+            <SettingRow key={category.categoryName} category={category} openedByDefault={category.openedByDefault}/>
           ))
         }
       </div>

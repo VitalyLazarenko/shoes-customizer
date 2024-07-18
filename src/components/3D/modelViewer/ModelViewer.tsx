@@ -1,15 +1,17 @@
+import classNames from "classnames";
 import {Suspense, useMemo} from "react"
 import {Canvas} from "@react-three/fiber"
 import styles from './styles.module.scss'
-import {OrbitControls, useGLTF} from "@react-three/drei"
-import classNames from "classnames";
 import {AroundArrowIcon} from "../../icons";
-import useConfiguratorStore from "../../../store/configuratorStore.ts";
 import { MeshStandardMaterial, Mesh } from 'three';
+import {OrbitControls, useGLTF} from "@react-three/drei"
+import useConfiguratorStore from "../../../store/configuratorStore.ts";
 
 const Model = () => {
-  const { setIsLoading, selectedOptions } = useConfiguratorStore();
-  const { scene } = useGLTF('/models/Adidas_Stan_Smith.glb');
+  const { activeModel, setIsLoading, selectedOptions } = useConfiguratorStore();
+  if (!activeModel) return
+  
+  const { scene } = useGLTF(activeModel.modelUrl);
   
   useMemo(() => {
     if (scene) {
@@ -31,10 +33,11 @@ const Model = () => {
     }
   }, [scene, selectedOptions]);
   
-  return <primitive position={[0, -0.2, 0]} object={scene} />;
+  return <primitive position={activeModel.modelPosition} rotation={activeModel.modelRotation} object={scene} />;
 };
 
 const ModelViewer = () => {
+  const {isRotation, setIsRotation} = useConfiguratorStore()
   return (
     <div className={styles.modelViewerWrapper}>
       <div className={styles.modelTitleContainer}>
@@ -51,10 +54,10 @@ const ModelViewer = () => {
             <pointLight position={[0, 3, 2]} intensity={25}/>
             <pointLight position={[2, 0, 4]} intensity={10}/>
             <Model/>
-            <OrbitControls autoRotate autoRotateSpeed={0.5}/>
+            <OrbitControls autoRotate={isRotation} autoRotateSpeed={0.5} minDistance={0.8} maxDistance={2.0}/>
           </Suspense>
         </Canvas>
-        <div className={classNames(styles.rotateIcon)}>
+        <div className={classNames(styles.rotateIcon, isRotation && styles.animate)} onClick={() => setIsRotation(!isRotation)}>
           <AroundArrowIcon/>
         </div>
       </div>
