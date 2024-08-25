@@ -1,6 +1,5 @@
 import {FC, useState} from "react"
 import classNames from "classnames";
-import {toast} from "react-toastify";
 import styles from './styles.module.scss'
 import Collapsible from "react-collapsible"
 import {RowTrigger} from "./RowTrigger/RowTrigger.tsx"
@@ -20,13 +19,14 @@ export const SettingRow: FC<ISettingsRow> = ({openedByDefault = false, category}
   const drawOptions = (subCategoryOptions: SubCategory) => {
     
     const handleSelectOption = (item: Option) => {
-      if (subCategoryOptions.title === 'Material') {
-        toast.info('Coming soon...')
-      }
+      // if (subCategoryOptions.title === 'Material') {
+      //   toast.info('Coming soon...')
+      // }
       selectOption({
         categoryName: category.categoryName,
         materialType: category.materialType,
         materialNames: category.materialNames,
+        decalNames: category.decals,
         subCategories: subCategoryOptions.title,
         option: item
       })
